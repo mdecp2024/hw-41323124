@@ -45,16 +45,39 @@ for i in range(n):  # 對於每一行
      #print(space * (n - i - 1), end='')  # 在每行前面印出空格
    print("目前數字為" + str(i))</pre>
 <p></p><h3>w11_hw</h3>
+<p>說明:依照範例,將程式碼存入個人 Gist 後, 直接在個人作業網站中的 Brython 頁面中執行。</p>
 <p>題目一:</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/JYr10SSyIIg" width="560"></iframe></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 設定區域大小和圓的參數
+width, height = 10, 10
+center_x, center_y = width // 2, height // 2  # 圓心
+radius = 4  # 圓的半徑
+
+# 繪製圓形
+for y in range(height):
+    for x in range(width):
+        # 計算與圓心的距離
+        distance = ((x - center_x) ** 2 + (y - center_y) ** 2) ** 0.5
+        # 判斷是否在圓的範圍內
+        if distance &lt;= radius:
+            print("*", end="")
+        else:
+            print(" ", end="")
+    print()
+</pre>
+<p></p>
+<p>題目二:</p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/5A_2yqu93oY" width="560"></iframe></p>
 <p></p>
 <p></p><h3>w10</h3>
-<p>題目一:<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/cCmrAIrZScQ" width="560"></iframe></p>
-<p>題目二:<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/CeMmmPDs4Uo" width="560"></iframe></p>
-<p>題目三:<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/mSjAnIRFbok" width="560"></iframe></p>
-<p>每六人為一組進行協同程式練習</p>
-<p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 Topic 1 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<h2>W7</h2>
+<p>期中考</p>
+<p>題目一:</p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/cCmrAIrZScQ" width="560"></iframe></p>
+<p>題目二:</p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/CeMmmPDs4Uo" width="560"></iframe></p>
+<p>題目三:</p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/mSjAnIRFbok" width="560"></iframe></p>
+<p></p><h2>W7</h2>
 <p>影片連結:</p>
 <h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>

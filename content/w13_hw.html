@@ -2,7 +2,7 @@
         <head>
         <title>cp_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,15 +141,39 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">W7-1 << <a href='W7-1.html'>Previous</a> <a href='HW 2 Exam.html'>Next</a> >> HW 2 Exam<br /><h1>HW 2</h1>
-<h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
-<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
-<hr/>
-<p>延續 HW 1 網頁資料整理與程式練習方法, 整理下列內容 (20%):</p>
-<p>PART 2: Introduction to lists and if/else statements</p>
-<p>PART 3: Introduction to the for loop</p>
-<p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p>
-<br />W7-1 << <a href='W7-1.html'>Previous</a> <a href='HW 2 Exam.html'>Next</a> >> HW 2 Exam</div>
+    <div id="tipue_search_content">w10 << <a href='w10.html'>Previous</a> <a href='W7-1.html'>Next</a> >> W7-1<br /><h1>w13_hw</h1>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<div id="brython_div1"></div>
+<p>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+ctx = canvas.getContext("2d")
+
+ctx.lineWidth = 1
+ctx.strokeStyle = 'blue'  
+ctx.beginPath()
+ctx.moveTo(10, 10)
+ctx.lineTo(210, 210)
+ctx.stroke()
+</script>
+</p><br />w10 << <a href='w10.html'>Previous</a> <a href='W7-1.html'>Next</a> >> W7-1</div>
         
     <!-- footer -->
       <div class="container">

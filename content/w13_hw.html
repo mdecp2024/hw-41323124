@@ -142,6 +142,7 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">w10 << <a href='w10.html'>Previous</a> <a href='W7-1.html'>Next</a> >> W7-1<br /><h1>w13_hw</h1>
+<p>繪製出一條線:</p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="./../cmsimde/static/brython.js"></script>
@@ -172,6 +173,254 @@ ctx.beginPath()
 ctx.moveTo(10, 10)
 ctx.lineTo(210, 210)
 ctx.stroke()
+</script>
+</p>
+<p>透過點座標的掃瞄,在指定的區域填入顏色:</p>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<div id="brython_div1"></div>
+<p>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+ctx = canvas.getContext("2d")
+
+ctx.strokeStyle = 'red'  # 設定矩形顏色為紅色
+ctx.beginPath() 
+ctx.rect(50, 50, 200, 200)
+ctx.rect(150, 150, 200, 200)
+ctx.stroke()
+
+# 繪製對角線，顏色設定為藍色
+ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
+ctx.beginPath() 
+ctx.moveTo(50, 50)
+ctx.lineTo(250, 250)
+ctx.stroke()
+
+ctx.strokeStyle = 'black'
+ctx.beginPath()
+ctx.arc(150, 150, 141.421356, 0, 2 * 3.14159)
+ctx.stroke()
+ctx.strokeStyle = 'black'
+ctx.beginPath()
+ctx.arc(250, 250, 141.421356, 0, 2 * 3.14159)
+ctx.stroke()
+</script>
+</p>
+<p></p>
+<p>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+
+# 設置畫布
+canvas = html.CANVAS(width=600, height=600)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1
+
+# 畫兩個矩形 (紅色邊框)
+ctx.strokeStyle = 'red'
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200)
+ctx.rect(200, 200, 200, 200)
+ctx.stroke()
+
+# 畫對角線 (藍色)
+ctx.strokeStyle = 'blue'
+ctx.beginPath()
+ctx.moveTo(100, 100)
+ctx.lineTo(300, 300)
+ctx.stroke()
+
+# 畫兩個圓形 (黑色)
+ctx.strokeStyle = 'black'
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14)
+ctx.stroke()
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14)
+ctx.stroke()
+
+# 判斷點的位置
+def point_in_circle1(x, y):
+    cx, cy, r = 200, 200, 141.4
+    return (x - cx) ** 2 + (y - cy) ** 2 < r ** 2
+
+def point_in_square1(x, y):
+    return 100 <= x <= 300 and 100 <= y <= 300
+
+def point_outside_square1(x, y):
+    return not point_in_square1(x, y)
+
+def point_in_circle2(x, y):
+    cx, cy, r = 300, 300, 141.4
+    return (x - cx) ** 2 + (y - cy) ** 2 < r ** 2
+
+def point_inside_square2(x, y):
+    return 200 <= x <= 400 and 200 <= y <= 400
+
+def point_on_line_segment(x, y):
+    return y == x and 100 <= x <= 300 and 100 <= y <= 300
+
+def point_above_line(x, y):
+    return y < x
+
+def point_below_line(x, y):
+    return y > x
+
+# 判斷點是否在正方形的上方、下方、左方、右方
+def point_above_square1(x, y):
+    return y < 100
+
+def point_below_square1(x, y):
+    return y > 300
+
+def point_left_of_square1(x, y):
+    return x < 100
+
+def point_right_of_square1(x, y):
+    return x > 300
+
+def point_above_square2(x, y):
+    return y < 200
+
+def point_below_square2(x, y):
+    return y > 400
+
+def point_left_of_square2(x, y):
+    return x < 200
+
+def point_right_of_square2(x, y):
+    return x > 400
+
+# 取得點所屬區域的函式
+def get_region(x, y):
+    regions = []
+    if point_in_circle1(x, y):
+        regions.append("circle1")
+    if point_in_square1(x, y):
+        regions.append("inside_square1")
+    if point_outside_square1(x, y):
+        regions.append("outside_square1")
+    if point_in_circle2(x, y):
+        regions.append("circle2")
+    if point_inside_square2(x, y):
+        regions.append("inside_square2")
+    if point_on_line_segment(x, y):
+        regions.append("on_line_segment")
+    if point_above_line(x, y):
+        regions.append("above_line")
+    if point_below_line(x, y):
+        regions.append("below_line")
+    
+    # 新增正方形上下左右區分
+    if point_above_square1(x, y):
+        regions.append("above_square1")
+    if point_below_square1(x, y):
+        regions.append("below_square1")
+    if point_left_of_square1(x, y):
+        regions.append("left_of_square1")
+    if point_right_of_square1(x, y):
+        regions.append("right_of_square1")
+    
+    if point_above_square2(x, y):
+        regions.append("above_square2")
+    if point_below_square2(x, y):
+        regions.append("below_square2")
+    if point_left_of_square2(x, y):
+        regions.append("left_of_square2")
+    if point_right_of_square2(x, y):
+        regions.append("right_of_square2")
+    
+    return regions
+
+# 根據區域屬性決定顏色
+def get_region_color(x, y):
+    regions = get_region(x, y)
+
+    # 只要點不在兩個圓內，則不進行顏色標註
+    if "circle1" not in regions and "circle2" not in regions:
+        return None  # 圓外區域不著色
+
+    # 第一個圓內且第二個圓內
+    if "circle1" in regions and "circle2" in regions:
+        return "purple"  # 兩個圓內部的區域
+
+    # 第一個圓內且在第一個正方形內部
+    if "circle1" in regions and "inside_square1" in regions:
+        if point_above_line(x, y):
+            return "green"  # 第一個圓內且位於第一個正方形內部且對角線上方
+        elif point_below_line(x, y):
+            return "yellow"  # 第一個圓內且位於第一個正方形內部且對角線下方
+
+    # 第一個圓內且不在第一個正方形內部
+    if "circle1" in regions and "outside_square1" in regions:
+        if point_above_square1(x, y):
+            return "cyan"  # 第一個圓內且位於正方形上方
+        elif point_below_square1(x, y):
+            return "magenta"  # 第一個圓內且位於正方形下方
+        elif point_left_of_square1(x, y):
+            return "orange"  # 第一個圓內且位於正方形左方
+        elif point_right_of_square1(x, y):
+            return "brown"  # 第一個圓內且位於正方形右方
+
+    # 第二個圓內且在第二個正方形內部
+    if "circle2" in regions and "inside_square2" in regions:
+        return "red"  # 第二個圓內且在正方形2內部
+
+    # 第二個圓內但不在第二個正方形內部
+    if "circle2" in regions and "outside_square2" in regions:
+        if point_above_square2(x, y):
+            return "lightblue"  # 第二個圓內且位於正方形2上方
+        elif point_below_square2(x, y):
+            return "pink"  # 第二個圓內且位於正方形2下方
+        elif point_left_of_square2(x, y):
+            return "lightgreen"  # 第二個圓內且位於正方形2左方
+        elif point_right_of_square2(x, y):
+            return "lightyellow"  # 第二個圓內且位於正方形2右方
+
+    # 標註對角線位置
+    if "on_line_segment" in regions:
+        return "black"  # 位於對角線上
+    elif "above_line" in regions:
+        return "orange"  # 位於對角線上方
+    elif "below_line" in regions:
+        return "pink"  # 位於對角線下方
+
+    return None  # 沒有符合的區域，則不著色
+
+# 繪製掃描點並著色
+def scan_and_draw():
+    for y in range(0, canvas.height, 1):  # 每10個像素掃描一次
+        for x in range(0, canvas.width, 1):
+            color = get_region_color(x, y)
+            if color:
+                ctx.fillStyle = color
+                ctx.beginPath()
+                ctx.arc(x + 1, y + 1, 1, 0, 2 * 3.14)  # 用圓點標示
+                ctx.fill()
+
+# 開始掃描和標示
+scan_and_draw()
 </script>
 </p><br />w10 << <a href='w10.html'>Previous</a> <a href='W7-1.html'>Next</a> >> W7-1</div>
         

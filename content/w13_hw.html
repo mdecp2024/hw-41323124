@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='w12_hw.html'>w12_hw</a><li><a href='w11_hw.html'>w11_hw</a><li><a href='w10.html'>w10</a><li><a href='w13_hw.html'>w13_hw</a></li></ul><li><a href='W7-1.html'>W7-1</a></li></ul><li class='has-children'><a href='HW 2.html'>HW 2</a><ul class='dropdown'><li><a href='HW 2 Exam.html'>HW 2 Exam</a></li></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li><a href='HW 3 Exam.html'>HW 3 Exam</a><li><a href='W7-2.html'>W7-2</a></li></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='w12_hw.html'>w12_hw</a><li><a href='w11_hw.html'>w11_hw</a><li><a href='w10.html'>w10</a><li><a href='w13.html'>w13</a><li><a href='w13_hw.html'>w13_hw</a></li></ul><li><a href='W7-1.html'>W7-1</a></li></ul><li class='has-children'><a href='HW 2.html'>HW 2</a><ul class='dropdown'><li><a href='HW 2 Exam.html'>HW 2 Exam</a></li></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li><a href='HW 3 Exam.html'>HW 3 Exam</a><li><a href='W7-2.html'>W7-2</a></li></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,40 +141,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w10 << <a href='w10.html'>Previous</a> <a href='W7-1.html'>Next</a> >> W7-1<br /><h1>w13_hw</h1>
-<p>繪製出一條線:</p>
-<!-- 導入 brython 程式庫 -->
-<p>
-<script src="./../cmsimde/static/brython.js"></script>
-<script src="./../cmsimde/static/brython_stdlib.js"></script>
-</p>
-<!-- 啟動 Brython -->
-<p>
-<script>
-window.onload=function(){
-brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
-}
-</script>
-</p>
-<div id="brython_div1"></div>
-<p>
-<script type="text/python3">
-from browser import html
-from browser import document as doc
-# 利用 html 建立 canvas 超文件物件
-canvas = html.CANVAS(width=400, height=400)
-brython_div = doc["brython_div1"]
-brython_div <= canvas
-ctx = canvas.getContext("2d")
-
-ctx.lineWidth = 1
-ctx.strokeStyle = 'blue'  
-ctx.beginPath()
-ctx.moveTo(10, 10)
-ctx.lineTo(210, 210)
-ctx.stroke()
-</script>
-</p>
+    <div id="tipue_search_content">w13 << <a href='w13.html'>Previous</a> <a href='W7-1.html'>Next</a> >> W7-1<br /><h1>w13_hw</h1>
 <p>透過點座標的掃瞄,在指定的區域填入顏色:</p>
 <!-- 導入 brython 程式庫 -->
 <p>
@@ -422,7 +389,8 @@ def scan_and_draw():
 # 開始掃描和標示
 scan_and_draw()
 </script>
-</p><br />w10 << <a href='w10.html'>Previous</a> <a href='W7-1.html'>Next</a> >> W7-1</div>
+</p>
+<br />w13 << <a href='w13.html'>Previous</a> <a href='W7-1.html'>Next</a> >> W7-1</div>
         
     <!-- footer -->
       <div class="container">

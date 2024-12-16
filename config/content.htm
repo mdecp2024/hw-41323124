@@ -69,7 +69,8 @@ for i in range(1,11):
 <p><span style="color: #ff0000;"><span style="color: #000000;"><span style="color: #0000ff;">第九題</span>:for_loop_if_equals(for迴圈)  <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/41323124/b1bf30ad971f45f1c12288922fb614fb/raw/b6cbc2a0b0ad8d520cc22ccadf5be85d4aca2fda/w12_hw-9">程式</a></span></span></p>
 <p><span style="color: #ff0000;"><span style="color: #000000;"><span style="color: #ff0000;">說明</span>:列出動物的名子,並標示出特別想看的種類以及訊息,其餘則顯示一般訊息。</span></span></p>
 <p><span style="color: #ff0000;"><span style="color: #000000;"><span style="color: #0000ff;">第十題</span>:for_search(搜尋)  <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/41323124/19766e1970822aca15abf588ceba829d/raw/2dacbd240bd5621b8242af98b89f9898224d7678/w12_hw-10">程式</a></span></span></p>
-<p><span style="color: #ff0000;"><span style="color: #000000;"><span style="color: #ff0000;">說明</span>:依據不同的條件,將不同名子長度的物品做區分。</span></span></p><h3>w12</h3>
+<p><span style="color: #ff0000;"><span style="color: #000000;"><span style="color: #ff0000;">說明</span>:依據不同的條件,將不同名子長度的物品做區分。</span></span></p>
+<h3>w12</h3>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/bK8d-nGy3Oc" width="560"></iframe></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">n = 10 # 總共的行數
 space = '_'
@@ -162,7 +163,6 @@ for x in range(1, 11):
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/mSjAnIRFbok" width="560"></iframe></p>
 <p></p>
 <h3>w13</h3>
-<p>繪製出一條線:</p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js"></script>
@@ -182,6 +182,40 @@ brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 from browser import html
 from browser import document as doc
 # 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=600, height=600) # 調整畫布大小以容納圓形
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+ 
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1
+ 
+# 1. 繪製兩個矩形 (紅色邊框)
+ctx.strokeStyle = 'red' # 設定矩形的邊框顏色為紅色
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200) # 第一個正方形的左上角在(100, 100)，邊長200
+ctx.rect(200, 200, 200, 200) # 第二個正方形的左上角在(200, 200)，邊長200
+ctx.stroke()
+ 
+# 2. 繪製對角線 (藍色) - 只連接第一個矩形的左上角和第一個矩形的右下角
+ctx.strokeStyle = 'blue' # 設定對角線顏色為藍色
+ctx.beginPath()
+ctx.moveTo(100, 100) # 起點為第一個矩形的左上角 (100, 100)
+ctx.lineTo(300, 300) # 終點為第一個矩形的右下角 (300, 300)
+ctx.stroke()
+ 
+# 3. 繪製兩個外切圓 (黑色)
+ctx.strokeStyle = 'black' # 設定圓的顏色為黑色
+ 
+# 第一個矩形的外切圓
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14) # 圓心在(200, 200)，半徑為141.4（sqrt(2) * 邊長的一半）
+ctx.stroke()
+ 
+# 第二個矩形的外切圓
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14) # 圓心在(300, 300)，半徑為141.4
+ctx.stroke()
+
 canvas = html.CANVAS(width=400, height=400)
 brython_div = doc["brython_div1"]
 brython_div <= canvas
@@ -194,11 +228,11 @@ ctx.moveTo(10, 10)
 ctx.lineTo(210, 210)
 ctx.stroke()
 </script>
-</p>
-<h3>w13_hw</h3>
+</p><h3>w13_hw</h3>
 <!-- 導入 brython 程式庫 -->
 <p>
-<script src="/static/brython.js"></script>
+<script src="/static/brython.js">
+</script>
 <script src="/static/brython_stdlib.js"></script>
 </p>
 <!-- 啟動 Brython -->
@@ -215,132 +249,129 @@ brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 from browser import html
 from browser import document as doc
 import math
-  
+import random
+
+# 生成隨機 RGBA 顏色
+def random_rgba():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    a = round(random.uniform(0.3, 0.7), 2)  # 半透明顏色
+    return f"rgba({r}, {g}, {b}, {a})"
+
 canvas = html.CANVAS(width=500, height=500)
 brython_div = doc["brython_div1"]
 brython_div <= canvas
-  
+
 ctx = canvas.getContext("2d")
-ctx.lineWidth = 4
- 
-#混色的
-ctx.globalCompositeOperation = "screem"
- 
- 
-#黑邊圓*2(每個畫四個邊邊)
-ctx.strokeStyle = 'black'
-#第一個圓
+ctx.lineWidth = 1
+
+# 混色模式設置（以確保透明效果）
+ctx.globalCompositeOperation = "source-over"
+
+# 黑邊圓 *2（每個畫四個邊）
+ctx.strokeStyle = random_rgba()
+# 第一個圓
 ctx.beginPath()
-ctx.arc(160, 160, 141, 0.25 * math.pi,0.75 * math.pi)
-ctx.fillStyle = "Turquoise"
+ctx.arc(160, 160, 141, 0.25 * math.pi, 0.75 * math.pi)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
 ctx.beginPath()
-ctx.arc(160, 160, 141, 0.75 * math.pi,1.25 * math.pi)
-ctx.fillStyle = "Tomato"
+ctx.arc(160, 160, 141, 0.75 * math.pi, 1.25 * math.pi)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
 ctx.beginPath()
-ctx.arc(160, 160, 141, 1.25 * math.pi,1.75 * math.pi)
-ctx.fillStyle = "SpringGreen"
+ctx.arc(160, 160, 141, 1.25 * math.pi, 1.75 * math.pi)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
 ctx.beginPath()
-ctx.arc(160, 160, 141, 1.75 * math.pi,0.25 * math.pi)
-ctx.fillStyle = "FloralWhite"
+ctx.arc(160, 160, 141, 1.75 * math.pi, 0.25 * math.pi)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
-#第二個圓
+
+# 第二個圓
 ctx.beginPath()
-ctx.arc(260, 260, 141, 1.25 * math.pi,1.75 * math.pi)
-ctx.fillStyle = "Purple"
+ctx.arc(260, 260, 141, 1.25 * math.pi, 1.75 * math.pi)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
 ctx.beginPath()
-ctx.arc(260, 260, 141, 1.75 * math.pi,0.25 * math.pi)
-ctx.fillStyle = "OliveDrab"
+ctx.arc(260, 260, 141, 1.75 * math.pi, 0.25 * math.pi)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
 ctx.beginPath()
-ctx.arc(260, 260, 141, 0.25 * math.pi,0.75 * math.pi)
-ctx.fillStyle = "Orange"
+ctx.arc(260, 260, 141, 0.25 * math.pi, 0.75 * math.pi)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
 ctx.beginPath()
-ctx.arc(260, 260, 141, 0.75 * math.pi,1.25 * math.pi)
-ctx.fillStyle = "MediumVioletRed"
+ctx.arc(260, 260, 141, 0.75 * math.pi, 1.25 * math.pi)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
- 
-#紅方形*2(4個三角形)
-ctx.strokeStyle = 'red'
+
+# 紅方形 *2（4個三角形）
+ctx.strokeStyle = random_rgba()
 ctx.beginPath()
-ctx.moveTo(60,60)
-ctx.lineTo(60,260)
-ctx.lineTo(260,260)
-ctx.fillStyle = "Gold"
+ctx.moveTo(60, 60)
+ctx.lineTo(60, 260)
+ctx.lineTo(260, 260)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
 ctx.beginPath()
-ctx.moveTo(60,60)
-ctx.lineTo(260,60)
-ctx.lineTo(260,260)
-ctx.fillStyle = "Indigo"
+ctx.moveTo(60, 60)
+ctx.lineTo(260, 60)
+ctx.lineTo(260, 260)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
+# 第三與第四個三角形改為正方形
 ctx.beginPath()
-ctx.moveTo(160,160)
-ctx.lineTo(360,160)
-ctx.lineTo(360,360)
-ctx.fillStyle = "Cyan"
+ctx.rect(160, 160, 200, 200)  # 定義正方形位置與大小
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
+# 重疊的小方形
 ctx.beginPath()
-ctx.moveTo(160,160)
-ctx.lineTo(160,360)
-ctx.lineTo(360,360)
-ctx.fillStyle = "SpringGreen"
+ctx.moveTo(160, 160)
+ctx.lineTo(160, 260)
+ctx.lineTo(260, 260)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
-  
-#重疊的小方型
+
 ctx.beginPath()
-ctx.moveTo(160,160)
-ctx.lineTo(160,260)
-ctx.lineTo(260,260)
-ctx.fillStyle = "Turquoise"
+ctx.moveTo(160, 160)
+ctx.lineTo(260, 160)
+ctx.lineTo(260, 260)
+ctx.fillStyle = random_rgba()
 ctx.fill()
 ctx.stroke()
- 
+
+# 藍斜線
+ctx.strokeStyle = random_rgba()
 ctx.beginPath()
-ctx.moveTo(160,160)
-ctx.lineTo(260,160)
-ctx.lineTo(260,260)
-ctx.fillStyle = "SlateBlue"
-ctx.fill()
-ctx.stroke()
- 
- 
-#籃斜線
-ctx.strokeStyle = 'blue'
-ctx.beginPath() 
 ctx.moveTo(60, 60)
 ctx.lineTo(260, 260)
 ctx.stroke()
 </script>
 </p>
+<p>心得:這項作業經過了與chatGPT的長期抗戰,才發現可以運用到python的混色模式,對圖型可以在重疊的地方更改顏色,但這就讓我耗費了數個小時,最後我想到可以降低圖型的透明度,對重疊的地方,有更多的顏色可以呈現出來,才完成了這次的作業。</p>
 <h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>

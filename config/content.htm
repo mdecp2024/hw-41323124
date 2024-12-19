@@ -530,6 +530,29 @@ end = max(num1, num2)#max()找出兩數字較大的數。
 sum = addto(start, end)
  
 print(f"{num1} 到 {num2} 之間所有數字的總和是: {sum}")</pre>
+<p></p>
+<p><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/bbe0e39e43af0c4c69d088d2c1bf50b5/raw/010f82d11d3efe31195258659a0a49ca327a0f0b/w15_add_avoid_8">add_avoid_8</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 定義 add_only_even 函式#(add_only_even)僅加偶數
+def add_only_even(start, end):
+    sum = 0
+    for i in range(start, end + 1):  # 遍歷從 start 到 end (包括 end)
+        if i % 2 == 0:  # 檢查是否為偶數  # %是取餘數運算符
+            sum += i
+    return sum  # 將計算出來的偶數總和結果返回。
+  
+# 定義 add_avoid_8 函式
+def add_avoid_8(start, end):  # 計算範圍內所有數字的總和，但排除掉包含數字 "8" 的數字。
+    sum = 0
+    for i in range(start, end + 1):  # 遍歷從 start 到 end (包括 end)
+        if '8' not in str(i):  # 檢查數字中是否不包含"8"
+            sum += i
+    return sum
+  
+# 測試 add_only_even 函式
+result = add_only_even(1, 100)
+print("1 到 100 的偶數累加結果是:", result)
+
+</pre>
 <p></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>

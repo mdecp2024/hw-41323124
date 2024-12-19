@@ -509,6 +509,27 @@ def addto(start, end):
 # 使用函式計算從 1 到 100 的累加結果
 result = addto(1, 100)#result(結果)
 print(result)  # 輸出：5050</pre>
+<p></p>
+<p><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/1aaab31a6f3e747f2389b072ea9a3dc5/raw/d2459ab10f9dd05f4cc39d7381d9174283d4a54f/w15_add_only_even">add_only_even</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 定義一個 addto 函數來計算總和 #addto(將數字加到某個範圍的總和)
+def addto(start, end):
+    total = 0
+    for i in range(start, end + 1):
+        total += i
+    return total#將累加的結果（變數 total）傳回
+ 
+# 輸入兩個數字
+num1 = int(input("請輸入第一個數字: "))#int:將字串改為正整數,(3.5)也被視為正整數3。
+num2 = int(input("請輸入第二個數字: "))#input(輸入)
+ 
+
+start = min(num1, num2)#min()找出兩數字較小的數。
+end = max(num1, num2)#max()找出兩數字較大的數。
+ 
+# 計算總和
+sum = addto(start, end)
+ 
+print(f"{num1} 到 {num2} 之間所有數字的總和是: {sum}")</pre>
 <p></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>

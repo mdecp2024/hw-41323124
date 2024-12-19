@@ -147,6 +147,18 @@ img.add_border {
 for i in range(1, 100+1):  # range(1, 101) 代表從 1 到 100
     total += i
 print(total)#印出累加後的數字</pre>
+<p></p>
+<p><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/1577cc42fcd882dd33dfc4cabae70ebc/raw/1146ddad95aab7f3978149010366f0791a4d1e20/w15_%2520addto">addto</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#addto(將數字加到某個範圍的總和)
+def addto(start, end):
+    total = 0
+    for i in range(start, end + 1):  # range 包含 start 到 end
+        total += i
+    return total#將累加的結果（變數 total）傳回
+
+# 使用函式計算從 1 到 100 的累加結果
+result = addto(1, 100)#result(結果)
+print(result)  # 輸出：5050</pre>
 <p></p><br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2</div>
         
     <!-- footer -->

@@ -536,7 +536,7 @@ print(f"{num1} 到 {num2} 之間所有數字的總和是: {sum}")</pre>
 def add_only_even(start, end):
     sum = 0
     for i in range(start, end + 1):  # 遍歷從 start 到 end (包括 end)
-        if i % 2 == 0:  # 檢查是否為偶數  # %是取餘數運算符
+        if i % 2 == 0:  # 檢查是否為偶數  # %是取餘數運算符號
             sum += i
     return sum  # 將計算出來的偶數總和結果返回。
   
@@ -544,7 +544,7 @@ def add_only_even(start, end):
 def add_avoid_8(start, end):  # 計算範圍內所有數字的總和，但排除掉包含數字 "8" 的數字。
     sum = 0
     for i in range(start, end + 1):  # 遍歷從 start 到 end (包括 end)
-        if '8' not in str(i):  # 檢查數字中是否不包含"8"
+        if '8' not in str(i):  # 檢查數字中是否不包含"8" #str:將資料轉換為字串
             sum += i
     return sum
   
@@ -552,6 +552,21 @@ def add_avoid_8(start, end):  # 計算範圍內所有數字的總和，但排除
 result = add_only_even(1, 100)
 print("1 到 100 的偶數累加結果是:", result)
 
+</pre>
+<p></p>
+<p><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/cb52a44ce1a6f344dbc1277176da19e2/raw/4cc328df95f8830108a6e5832408aeb67f69e0d7/w15_ex">ex:排除有"3"、"8"的數字</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 定義 add_avoid_8_and_3 函式
+def add_avoid_8_and_3(start, end):  # 計算範圍內所有數字的總和，但排除掉包含數字 "8" 和 "3" 的數字
+    sum = 0
+    for i in range(start, end + 1):  # 遍歷從 start 到 end (包括 end)
+        if '8' not in str(i) and '3' not in str(i):  # 檢查數字中是否不包含"8"和"3"  #str:將資料轉換為字串
+            sum += i
+    return sum
+
+
+# 測試 add_avoid_8_and_3 函式
+result_avoid_8_and_3 = add_avoid_8_and_3(1, 100)
+print("1 到 100 的總和，排除包含'8'和'3'的數字是:", result_avoid_8_and_3)
 </pre>
 <p></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>

@@ -536,7 +536,7 @@ print(f"{num1} 到 {num2} 之間所有數字的總和是: {sum}")</pre>
 def add_only_even(start, end):
     sum = 0
     for i in range(start, end + 1):  # 遍歷從 start 到 end (包括 end)
-        if i % 2 == 0:  # 檢查是否為偶數  # %是取餘數運算符
+        if i % 2 == 0:  # 檢查是否為偶數  # %是取餘數運算符號
             sum += i
     return sum  # 將計算出來的偶數總和結果返回。
   
@@ -544,7 +544,7 @@ def add_only_even(start, end):
 def add_avoid_8(start, end):  # 計算範圍內所有數字的總和，但排除掉包含數字 "8" 的數字。
     sum = 0
     for i in range(start, end + 1):  # 遍歷從 start 到 end (包括 end)
-        if '8' not in str(i):  # 檢查數字中是否不包含"8"
+        if '8' not in str(i):  # 檢查數字中是否不包含"8" #str:將資料轉換為字串
             sum += i
     return sum
   
@@ -553,7 +553,23 @@ result = add_only_even(1, 100)
 print("1 到 100 的偶數累加結果是:", result)
 
 </pre>
-<p></p><h1>HW 2</h1>
+<p></p>
+<p><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/cb52a44ce1a6f344dbc1277176da19e2/raw/4cc328df95f8830108a6e5832408aeb67f69e0d7/w15_ex">ex:排除有"3"、"8"的數字</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 定義 add_avoid_8_and_3 函式
+def add_avoid_8_and_3(start, end):  # 計算範圍內所有數字的總和，但排除掉包含數字 "8" 和 "3" 的數字
+    sum = 0
+    for i in range(start, end + 1):  # 遍歷從 start 到 end (包括 end)
+        if '8' not in str(i) and '3' not in str(i):  # 檢查數字中是否不包含"8"和"3"  #str:將資料轉換為字串
+            sum += i
+    return sum
+
+
+# 測試 add_avoid_8_and_3 函式
+result_avoid_8_and_3 = add_avoid_8_and_3(1, 100)
+print("1 到 100 的總和，排除包含'8'和'3'的數字是:", result_avoid_8_and_3)
+</pre>
+<p></p>
+<h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
 <hr/>
@@ -564,7 +580,115 @@ print("1 到 100 的偶數累加結果是:", result)
 <h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<h1>HW 3</h1>
+<h3>w16_exam1</h3>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js">
+</script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<div id="brython_div1"></div>
+<p>
+<script type="text/python3">
+from browser import document, html
+import math
+  
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=800, height=600)
+        document <= canvas
+  
+setup_canvas()
+ 
+# Set up canvas
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")  #由2D來進行繪圖
+ 
+# Set origin (31, 24)
+origin_x, origin_y = 31, 24  #設定原點座標為(31,24)
+ 
+# Draw X-axis(繪製X軸)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  #從原點(31,24)
+ctx.lineTo(500, origin_y)  #到(500,24)
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ctx.stroke()
+ 
+# Draw Y-axis(繪製Y軸)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  #原點(31.24)
+ctx.lineTo(origin_x, 500)  #到(31,500)
+ctx.stroke()
+ 
+# Label origin(標記原點)  
+ctx.font = "12px Arial"  #字體大小:12  字型:Arial
+ctx.fillStyle = "black"
+ctx.fillText("(31, 24)", origin_x + 5, origin_y - -15)  #ctx.fillText用以描繪文字
+ 
+ 
+# Hexagon (Orange)(六邊形)
+hex_x, hex_y = 100, 100  #以(100,100)做為中心
+ctx.beginPath()  #啟用一個新的路徑
+for i in range(6):
+    angle = i * (2 * math.pi / 6)  #頂點角度=ix2π/6
+    x = hex_x + 30 * math.cos(angle)  #半徑為30
+    y = hex_y + 30 * math.sin(angle)
+    if i == 0:  #(第一個頂點)
+        ctx.moveTo(x, y)
+    else:  #(將上一個頂點連接到當前頂點)
+        ctx.lineTo(x, y)
+ctx.closePath()  
+ctx.fillStyle = "orange"
+ctx.fill()
+ 
+# Diamond (Teal)(菱形)  //以(100,100)為中心,劃出邊長為40的對角
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(160, 70)
+ctx.lineTo(180, 100)
+ctx.lineTo(160, 130)
+ctx.lineTo(140, 100)
+ctx.closePath()
+ctx.fillStyle = "teal"
+ctx.fill()
+ 
+# Triangle (Teal)(三角形)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(165, 130)
+ctx.lineTo(205, 130)
+ctx.lineTo(185, 100)  #頂點
+ctx.closePath()
+ctx.fillStyle = "blue"
+ctx.fill()
+ 
+# Circle (Pink)(圓形)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.arc(230, 100, 30, 0, 2 * math.pi)  #以(230,100)為中心,半徑為30
+ctx.fillStyle = "pink"
+ctx.fill()
+ 
+# Square (Yellow)(正方形)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.rect(265, 75, 50, 50)  #中心(265,75) 大小為50x50
+ctx.fillStyle = "yellow"
+ctx.fill()
+ 
+# Rectangle (Blue)(長方形)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.rect(320, 90, 60, 20)  #中心(320,90) 大小為60x20
+ctx.fillStyle = "Blue"
+ctx.fill()
+</script>
+</p><h1>HW 3</h1>
 <h4>主題: Python 的數字、演算法與迴圈 (20%)</h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 4 and Part 5</p>
 <p>完成上述流程整理後, 請將 HW3 自評分數輸入 cp2024 自評表單中.</p>

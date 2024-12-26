@@ -782,10 +782,10 @@ ctx.fill()</pre>
 <div><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/b763fefffc23e48c0b6ce3f0695f4c78/raw/6e86032a9222231e03c2bc319992fbff35b96b62/w16_1">網頁</a></div>
 <div></div>
 <div><a href="https://youtu.be/5A_2yqu93oY">影片</a></div>
+<div><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/M7s9Za96U7E" width="560"></iframe></div>
 <div></div>
 <div></div>
-<p></p>
-<h1>HW 3</h1>
+<p></p><h1>HW 3</h1>
 <h4>主題: Python 的數字、演算法與迴圈 (20%)</h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 4 and Part 5</p>
 <p>完成上述流程整理後, 請將 HW3 自評分數輸入 cp2024 自評表單中.</p>
@@ -795,11 +795,75 @@ ctx.fill()</pre>
 <h3>w16_exam2</h3>
 <p></p>
 <p><a href="https://gist.githubusercontent.com/41323124/d1c8aa61c554c81c99830cf781773ec8/raw/b3ba0fcf37dd305ed5fd2134af340c471235486f/w16_2">程式</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+import math
+  
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=550, height=550)
+        document &lt;= canvas
+  
+setup_canvas()
+ 
+# Set up canvas
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")  #由2D來進行繪圖
+ 
+# Set origin (31, 24)
+origin_x, origin_y = 31, 24  #設定原點座標為(31,24)
+ 
+# Label origin(標記原點)  
+ctx.font = "12px Arial"  #字體大小:12  字型:Arial
+ctx.fillStyle = "red"  # 字體顏色改為紅色
+ctx.fillText("(31, 24)", origin_x + 5, origin_y - -15)  # ctx.fillText用以描繪文字
+
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  #從原點(31,24)
+ctx.lineTo(200, origin_y)  
+ctx.moveTo(300, origin_y)  
+ctx.lineTo(500, origin_y)  
+ctx.moveTo(150, 100)  
+ctx.lineTo(400, 100) 
+ctx.moveTo(150, 300)  
+ctx.lineTo(400, 300) 
+ctx.moveTo(origin_x, 500)  #從原點(31,24)
+ctx.lineTo(200, 500)  
+ctx.moveTo(300, 500)  
+ctx.lineTo(500, 500) 
+ctx.moveTo(200, 400)  
+ctx.lineTo(300, 400)
+ctx.moveTo(origin_x, 200)  
+ctx.lineTo(200, 200)
+ctx.strokeStyle = "blue"
+ctx.lineWidth = 2
+ctx.stroke() 
+
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  
+ctx.lineTo(origin_x, 500)  
+ctx.moveTo(500, origin_y)  
+ctx.lineTo(500, 500) 
+ctx.moveTo(200, 100)  
+ctx.lineTo(200, 200) 
+ctx.moveTo(400, 100)  
+ctx.lineTo(400, 200) 
+ctx.moveTo(300, 200)  
+ctx.lineTo(300, 300) 
+ctx.moveTo(400, 300)  
+ctx.lineTo(400, 500) 
+ctx.moveTo(200, 400)  
+ctx.lineTo(200, 500) 
+ctx.moveTo(150, 300)  
+ctx.lineTo(150, 400)
+ctx.strokeStyle = "blue"
+ctx.lineWidth = 2
+ctx.stroke() </pre>
 <p></p>
 <p><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/d1c8aa61c554c81c99830cf781773ec8/raw/b3ba0fcf37dd305ed5fd2134af340c471235486f/w16_2">網頁</a></p>
 <p></p>
-<p>影片</p>
-<p></p>
+<p><a href="https://youtu.be/B_j709fVYR4">影片</a></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/B_j709fVYR4" width="560"></iframe></p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js">
@@ -877,7 +941,7 @@ ctx.moveTo(150, 300)
 ctx.lineTo(150, 400)
 ctx.strokeStyle = "blue"
 ctx.lineWidth = 2
-ctx.stroke() 
+ctx.stroke()
 </script>
 </p><h1>HW 4</h1>
 <h4>主題: 利用 Python 控制機電模擬系統 (20%)</h4>
@@ -891,7 +955,128 @@ ctx.stroke()
 <h2>HW 4 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 4 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<h1>Final Report</h1>
+<h3>w16_exam3</h3>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js">
+</script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<div id="brython_div1"></div>
+<p>
+<script type="text/python3">
+from browser import document, html
+import math
+  
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=550, height=550)
+        document <= canvas
+  
+setup_canvas()
+ 
+# Set up canvas
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")  #由2D來進行繪圖
+ 
+# Set origin (31, 24)
+origin_x, origin_y = 31, 24  #設定原點座標為(31,24)
+ 
+# Label origin(標記原點)  
+ctx.font = "12px Arial"  #字體大小:12  字型:Arial
+ctx.fillStyle = "red"  # 字體顏色改為紅色
+ctx.fillText("(31, 24)", origin_x + 5, origin_y - 15)  # ctx.fillText用以描繪文字
+
+# Draw first set of lines
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  #從原點(31,24)
+ctx.lineTo(200, origin_y)  
+ctx.moveTo(300, origin_y)  
+ctx.lineTo(500, origin_y)  
+ctx.moveTo(150, 100)  
+ctx.lineTo(400, 100) 
+ctx.moveTo(150, 300)  
+ctx.lineTo(400, 300) 
+ctx.moveTo(origin_x, 500)  #從原點(31,24)
+ctx.lineTo(200, 500)  
+ctx.moveTo(300, 500)  
+ctx.lineTo(500, 500) 
+ctx.moveTo(200, 400)  
+ctx.lineTo(300, 400)
+ctx.moveTo(origin_x, 200)  
+ctx.lineTo(200, 200)
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ctx.stroke() 
+
+# Draw second set of lines
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  
+ctx.lineTo(origin_x, 500)  
+ctx.moveTo(500, origin_y)  
+ctx.lineTo(500, 500) 
+ctx.moveTo(200, 100)  
+ctx.lineTo(200, 200) 
+ctx.moveTo(400, 100)  
+ctx.lineTo(400, 200) 
+ctx.moveTo(300, 200)  
+ctx.lineTo(300, 300) 
+ctx.moveTo(400, 300)  
+ctx.lineTo(400, 500) 
+ctx.moveTo(200, 400)  
+ctx.lineTo(200, 500) 
+ctx.moveTo(150, 300)  
+ctx.lineTo(150, 400)
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ctx.stroke() 
+
+# Draw third set of lines (last path)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(250, origin_y)  
+ctx.lineTo(250, 50)  
+ctx.moveTo(250, 50)  
+ctx.lineTo(450, 50)  
+ctx.moveTo(450, 50)  
+ctx.lineTo(450, 250)
+ctx.moveTo(450, 250)  
+ctx.lineTo(350, 250)
+ctx.moveTo(350, 250)  
+ctx.lineTo(350, 150)
+ctx.moveTo(350, 150)  
+ctx.lineTo(250, 150)
+ctx.moveTo(250, 150)  
+ctx.lineTo(250, 250)
+ctx.moveTo(250, 250)  
+ctx.lineTo(50, 250)
+ctx.moveTo(50, 250)  
+ctx.lineTo(50, 450)
+ctx.moveTo(50, 450)  
+ctx.lineTo(175, 450)
+ctx.moveTo(175, 450)  
+ctx.lineTo(175, 350)
+ctx.moveTo(175, 350)  
+ctx.lineTo(350, 350)
+ctx.moveTo(350, 350)  
+ctx.lineTo(350, 450)
+ctx.moveTo(350, 450)  
+ctx.lineTo(250, 450)
+ctx.moveTo(250, 450)  
+ctx.lineTo(250, 500)
+ctx.strokeStyle = "red"  # Set stroke color to red
+ctx.lineWidth = 2
+ctx.stroke()  # Draw the last path in red
+</script>
+</p><h1>Final Report</h1>
 <p>期末口頭與書面專題報告 (20%)</p>
 <p>期末口頭專題報告影片:</p>
 <p style="padding-left: 30px;">......</p>

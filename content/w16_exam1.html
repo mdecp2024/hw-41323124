@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='W7.html'>W7</a><li><a href='w10.html'>w10</a><li><a href='w11_hw.html'>w11_hw</a><li><a href='w12.html'>w12</a><li><a href='w12_hw.html'>w12_hw</a><li><a href='w13.html'>w13</a><li><a href='w13_hw.html'>w13_hw</a><li><a href='w14_ex.html'>w14_ex</a><li><a href='w15.html'>w15</a></li></li></ul></ul><li class='has-children'><a href='HW 2.html'>HW 2</a><ul class='dropdown'><li class='has-children'><a href='HW 2 Exam.html'>HW 2 Exam</a><ul class='dropdown'><li><a href='w16_exam1.html'>w16_exam1</a></li></li></ul></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li><a href='HW 3 Exam.html'>HW 3 Exam</a></li></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='W7.html'>W7</a><li><a href='w10.html'>w10</a><li><a href='w11_hw.html'>w11_hw</a><li><a href='w12.html'>w12</a><li><a href='w12_hw.html'>w12_hw</a><li><a href='w13.html'>w13</a><li><a href='w13_hw.html'>w13_hw</a><li><a href='w14_ex.html'>w14_ex</a><li><a href='w15.html'>w15</a></li></li></ul></ul><li class='has-children'><a href='HW 2.html'>HW 2</a><ul class='dropdown'><li class='has-children'><a href='HW 2 Exam.html'>HW 2 Exam</a><ul class='dropdown'><li><a href='w16_exam1.html'>w16_exam1</a></li></li></ul></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li class='has-children'><a href='HW 3 Exam.html'>HW 3 Exam</a><ul class='dropdown'><li><a href='w16_exam2.html'>w16_exam2</a></li></li></ul></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -155,13 +155,6 @@ window.onload=function(){
 brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
-</p>
-<div id="brython_div1"><a href="https://gist.githubusercontent.com/41323124/b763fefffc23e48c0b6ce3f0695f4c78/raw/6e86032a9222231e03c2bc319992fbff35b96b62/w16_1">程式</a></div>
-<div></div>
-<div><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/b763fefffc23e48c0b6ce3f0695f4c78/raw/6e86032a9222231e03c2bc319992fbff35b96b62/w16_1">網頁</a></div>
-<div></div>
-<div><a href="https://youtu.be/5A_2yqu93oY">影片</a></div>
-<p>
 <script type="text/python3">
 from browser import document, html
 import math
@@ -253,7 +246,107 @@ ctx.rect(320, 90, 60, 20)  #中心(320,90) 大小為60x20
 ctx.fillStyle = "Blue"
 ctx.fill()
 </script>
-</p><br />HW 2 Exam << <a href='HW 2 Exam.html'>Previous</a> <a href='HW 3.html'>Next</a> >> HW 3</div>
+</p>
+<div id="brython_div1"><a href="https://gist.githubusercontent.com/41323124/b763fefffc23e48c0b6ce3f0695f4c78/raw/6e86032a9222231e03c2bc319992fbff35b96b62/w16_1">程式</a></div>
+<div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+import math
+  
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=800, height=600)
+        document &lt;= canvas
+  
+setup_canvas()
+ 
+# Set up canvas
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")  #由2D來進行繪圖
+ 
+# Set origin (31, 24)
+origin_x, origin_y = 31, 24  #設定原點座標為(31,24)
+ 
+# Draw X-axis(繪製X軸)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  #從原點(31,24)
+ctx.lineTo(500, origin_y)  #到(500,24)
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ctx.stroke()
+ 
+# Draw Y-axis(繪製Y軸)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  #原點(31.24)
+ctx.lineTo(origin_x, 500)  #到(31,500)
+ctx.stroke()
+ 
+# Label origin(標記原點)  
+ctx.font = "12px Arial"  #字體大小:12  字型:Arial
+ctx.fillStyle = "black"
+ctx.fillText("(31, 24)", origin_x + 5, origin_y - -15)  #ctx.fillText用以描繪文字
+ 
+ 
+# Hexagon (Orange)(六邊形)
+hex_x, hex_y = 100, 100  #以(100,100)做為中心
+ctx.beginPath()  #啟用一個新的路徑
+for i in range(6):
+    angle = i * (2 * math.pi / 6)  #頂點角度=ix2π/6
+    x = hex_x + 30 * math.cos(angle)  #半徑為30
+    y = hex_y + 30 * math.sin(angle)
+    if i == 0:  #(第一個頂點)
+        ctx.moveTo(x, y)
+    else:  #(將上一個頂點連接到當前頂點)
+        ctx.lineTo(x, y)
+ctx.closePath()  
+ctx.fillStyle = "orange"
+ctx.fill()
+ 
+# Diamond (Teal)(菱形)  //以(100,100)為中心,劃出邊長為40的對角
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(160, 70)
+ctx.lineTo(180, 100)
+ctx.lineTo(160, 130)
+ctx.lineTo(140, 100)
+ctx.closePath()
+ctx.fillStyle = "teal"
+ctx.fill()
+ 
+# Triangle (Teal)(三角形)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(165, 130)
+ctx.lineTo(205, 130)
+ctx.lineTo(185, 100)  #頂點
+ctx.closePath()
+ctx.fillStyle = "blue"
+ctx.fill()
+ 
+# Circle (Pink)(圓形)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.arc(230, 100, 30, 0, 2 * math.pi)  #以(230,100)為中心,半徑為30
+ctx.fillStyle = "pink"
+ctx.fill()
+ 
+# Square (Yellow)(正方形)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.rect(265, 75, 50, 50)  #中心(265,75) 大小為50x50
+ctx.fillStyle = "yellow"
+ctx.fill()
+ 
+# Rectangle (Blue)(長方形)
+ctx.beginPath()  #啟用一個新的路徑
+ctx.rect(320, 90, 60, 20)  #中心(320,90) 大小為60x20
+ctx.fillStyle = "Blue"
+ctx.fill()</pre>
+</div>
+<div></div>
+<div><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/b763fefffc23e48c0b6ce3f0695f4c78/raw/6e86032a9222231e03c2bc319992fbff35b96b62/w16_1">網頁</a></div>
+<div></div>
+<div><a href="https://youtu.be/5A_2yqu93oY">影片</a></div>
+<div></div>
+<div></div>
+<p></p>
+<br />HW 2 Exam << <a href='HW 2 Exam.html'>Previous</a> <a href='HW 3.html'>Next</a> >> HW 3</div>
         
     <!-- footer -->
       <div class="container">

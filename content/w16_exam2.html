@@ -141,15 +141,158 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w11_hw << <a href='w11_hw.html'>Previous</a> <a href='w12_hw.html'>Next</a> >> w12_hw<br /><h1>w12</h1>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/bK8d-nGy3Oc" width="560"></iframe></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">n = 10 # 總共的行數
-space = '_'
-for i in range(n):  # 對於每一行
-     #print(space * (n - i - 1), end='')  # 在每行前面印出空格
-   print("目前數字為" + str(i))</pre>
+    <div id="tipue_search_content">HW 3 Exam << <a href='HW 3 Exam.html'>Previous</a> <a href='HW 4.html'>Next</a> >> HW 4<br /><h1>w16_exam2</h1>
 <p></p>
-<br />w11_hw << <a href='w11_hw.html'>Previous</a> <a href='w12_hw.html'>Next</a> >> w12_hw</div>
+<p><a href="https://gist.githubusercontent.com/41323124/d1c8aa61c554c81c99830cf781773ec8/raw/b3ba0fcf37dd305ed5fd2134af340c471235486f/w16_2">程式</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+import math
+  
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=550, height=550)
+        document &lt;= canvas
+  
+setup_canvas()
+ 
+# Set up canvas
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")  #由2D來進行繪圖
+ 
+# Set origin (31, 24)
+origin_x, origin_y = 31, 24  #設定原點座標為(31,24)
+ 
+# Label origin(標記原點)  
+ctx.font = "12px Arial"  #字體大小:12  字型:Arial
+ctx.fillStyle = "red"  # 字體顏色改為紅色
+ctx.fillText("(31, 24)", origin_x + 5, origin_y - -15)  # ctx.fillText用以描繪文字
+
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  #從原點(31,24)
+ctx.lineTo(200, origin_y)  
+ctx.moveTo(300, origin_y)  
+ctx.lineTo(500, origin_y)  
+ctx.moveTo(150, 100)  
+ctx.lineTo(400, 100) 
+ctx.moveTo(150, 300)  
+ctx.lineTo(400, 300) 
+ctx.moveTo(origin_x, 500)  #從原點(31,24)
+ctx.lineTo(200, 500)  
+ctx.moveTo(300, 500)  
+ctx.lineTo(500, 500) 
+ctx.moveTo(200, 400)  
+ctx.lineTo(300, 400)
+ctx.moveTo(origin_x, 200)  
+ctx.lineTo(200, 200)
+ctx.strokeStyle = "blue"
+ctx.lineWidth = 2
+ctx.stroke() 
+
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  
+ctx.lineTo(origin_x, 500)  
+ctx.moveTo(500, origin_y)  
+ctx.lineTo(500, 500) 
+ctx.moveTo(200, 100)  
+ctx.lineTo(200, 200) 
+ctx.moveTo(400, 100)  
+ctx.lineTo(400, 200) 
+ctx.moveTo(300, 200)  
+ctx.lineTo(300, 300) 
+ctx.moveTo(400, 300)  
+ctx.lineTo(400, 500) 
+ctx.moveTo(200, 400)  
+ctx.lineTo(200, 500) 
+ctx.moveTo(150, 300)  
+ctx.lineTo(150, 400)
+ctx.strokeStyle = "blue"
+ctx.lineWidth = 2
+ctx.stroke() </pre>
+<p></p>
+<p><a href="https://effective-funicular-4jwjg97xp9q4cj9xp-8081.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/41323124/d1c8aa61c554c81c99830cf781773ec8/raw/b3ba0fcf37dd305ed5fd2134af340c471235486f/w16_2">網頁</a></p>
+<p></p>
+<p><a href="https://youtu.be/B_j709fVYR4">影片</a></p>
+<p></p>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="./../cmsimde/static/brython.js">
+</script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import document, html
+import math
+  
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=550, height=550)
+        document <= canvas
+  
+setup_canvas()
+ 
+# Set up canvas
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")  #由2D來進行繪圖
+ 
+# Set origin (31, 24)
+origin_x, origin_y = 31, 24  #設定原點座標為(31,24)
+ 
+# Label origin(標記原點)  
+ctx.font = "12px Arial"  #字體大小:12  字型:Arial
+ctx.fillStyle = "red"  # 字體顏色改為紅色
+ctx.fillText("(31, 24)", origin_x + 5, origin_y - -15)  # ctx.fillText用以描繪文字
+
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  #從原點(31,24)
+ctx.lineTo(200, origin_y)  
+ctx.moveTo(300, origin_y)  
+ctx.lineTo(500, origin_y)  
+ctx.moveTo(150, 100)  
+ctx.lineTo(400, 100) 
+ctx.moveTo(150, 300)  
+ctx.lineTo(400, 300) 
+ctx.moveTo(origin_x, 500)  #從原點(31,24)
+ctx.lineTo(200, 500)  
+ctx.moveTo(300, 500)  
+ctx.lineTo(500, 500) 
+ctx.moveTo(200, 400)  
+ctx.lineTo(300, 400)
+ctx.moveTo(origin_x, 200)  
+ctx.lineTo(200, 200)
+ctx.strokeStyle = "blue"
+ctx.lineWidth = 2
+ctx.stroke() 
+
+ctx.beginPath()  #啟用一個新的路徑
+ctx.moveTo(origin_x, origin_y)  
+ctx.lineTo(origin_x, 500)  
+ctx.moveTo(500, origin_y)  
+ctx.lineTo(500, 500) 
+ctx.moveTo(200, 100)  
+ctx.lineTo(200, 200) 
+ctx.moveTo(400, 100)  
+ctx.lineTo(400, 200) 
+ctx.moveTo(300, 200)  
+ctx.lineTo(300, 300) 
+ctx.moveTo(400, 300)  
+ctx.lineTo(400, 500) 
+ctx.moveTo(200, 400)  
+ctx.lineTo(200, 500) 
+ctx.moveTo(150, 300)  
+ctx.lineTo(150, 400)
+ctx.strokeStyle = "blue"
+ctx.lineWidth = 2
+ctx.stroke() 
+</script>
+</p><br />HW 3 Exam << <a href='HW 3 Exam.html'>Previous</a> <a href='HW 4.html'>Next</a> >> HW 4</div>
         
     <!-- footer -->
       <div class="container">

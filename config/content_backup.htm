@@ -9,8 +9,8 @@
 <p>Teams 線上教學:</p>
 <p style="padding-left: 30px;">以 "學號@nfu.edu.tw" 登入 <a href="https://login.microsoftonline.com/">https://login.microsoftonline.com/</a> Office 365</p>
 <p style="padding-left: 30px;">Teams 團隊代碼: <span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">ldodwua</span></p>
-<p>個人倉儲:<a href="https://github.com/mdecp2024/hw-41323124">mdecp2024/hw-41323124: mdecp2024-hw-cp2024_hw created by GitHub Classroom</a></p>
-<p>個人網站:<a href="https://github.com/41323124">41323124 (github.com)</a></p>
+<p>個人倉儲:<a href="https://github.com/mdecp2024/hw-41323124">https://github.com/mdecp2024/hw-41323124</a></p>
+<p>個人網站:<a href="https://mdecp2024.github.io/hw-41323124/content/About.html">https://mdecp2024.github.io/hw-41323124/content/About.html</a></p>
 <p>其他資訊:</p>
 <p style="padding-left: 30px;"><a href="/downloads/cd2023_pj3ag4_zmq_football_4.7.7z">cd2023_pj3ag4_zmq_football_4.7.7z</a></p>
 <p style="padding-left: 30px;"><a href="https://localhost:9446/downloads/cd2024_2b_g6_steel_ball_platform_nxopen_copsim.7z">cd2024_2b_g6_steel_ball_platform_nxopen_copsim.7z</a></p>
@@ -176,7 +176,56 @@ brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
 </p>
-<div id="brython_div1"></div>
+<div id="brython_div1">
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=600, height=600) # 調整畫布大小以容納圓形
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+ 
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1
+ 
+# 1. 繪製兩個矩形 (紅色邊框)
+ctx.strokeStyle = 'red' # 設定矩形的邊框顏色為紅色
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200) # 第一個正方形的左上角在(100, 100)，邊長200
+ctx.rect(200, 200, 200, 200) # 第二個正方形的左上角在(200, 200)，邊長200
+ctx.stroke()
+ 
+# 2. 繪製對角線 (藍色) - 只連接第一個矩形的左上角和第一個矩形的右下角
+ctx.strokeStyle = 'blue' # 設定對角線顏色為藍色
+ctx.beginPath()
+ctx.moveTo(100, 100) # 起點為第一個矩形的左上角 (100, 100)
+ctx.lineTo(300, 300) # 終點為第一個矩形的右下角 (300, 300)
+ctx.stroke()
+ 
+# 3. 繪製兩個外切圓 (黑色)
+ctx.strokeStyle = 'black' # 設定圓的顏色為黑色
+ 
+# 第一個矩形的外切圓
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14) # 圓心在(200, 200)，半徑為141.4（sqrt(2) * 邊長的一半）
+ctx.stroke()
+ 
+# 第二個矩形的外切圓
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14) # 圓心在(300, 300)，半徑為141.4
+ctx.stroke()
+
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+ctx = canvas.getContext("2d")
+
+ctx.lineWidth = 1
+ctx.strokeStyle = 'blue'  
+ctx.beginPath()
+ctx.moveTo(10, 10)
+ctx.lineTo(210, 210)
+ctx.stroke()</pre>
+</div>
 <p>
 <script type="text/python3">
 from browser import html
@@ -228,8 +277,7 @@ ctx.moveTo(10, 10)
 ctx.lineTo(210, 210)
 ctx.stroke()
 </script>
-</p>
-<h3>w13_hw</h3>
+</p><h3>w13_hw</h3>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js">
@@ -785,7 +833,8 @@ ctx.fill()</pre>
 <div><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/M7s9Za96U7E" width="560"></iframe></div>
 <div></div>
 <div></div>
-<p></p><h1>HW 3</h1>
+<p></p>
+<h1>HW 3</h1>
 <h4>主題: Python 的數字、演算法與迴圈 (20%)</h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 4 and Part 5</p>
 <p>完成上述流程整理後, 請將 HW3 自評分數輸入 cp2024 自評表單中.</p>
@@ -943,7 +992,8 @@ ctx.strokeStyle = "blue"
 ctx.lineWidth = 2
 ctx.stroke()
 </script>
-</p><h1>HW 4</h1>
+</p>
+<h1>HW 4</h1>
 <h4>主題: 利用 Python 控制機電模擬系統 (20%)</h4>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
@@ -1185,7 +1235,8 @@ ctx.strokeStyle = "red"  # Set stroke color to red
 ctx.lineWidth = 2
 ctx.stroke()  # Draw the last path in red
 </script>
-</p><h1>Final Report</h1>
+</p>
+<h1>Final Report</h1>
 <p>期末口頭與書面專題報告 (20%)</p>
 <p>期末口頭專題報告影片:</p>
 <p style="padding-left: 30px;">......</p>
